@@ -1,0 +1,29 @@
+---
+import type { SiteContent } from '../content/site';
+import Icon from './Icon.astro';
+import SectionHeading from './SectionHeading.astro';
+import TagList from './TagList.astro';
+
+interface Props {
+  content: SiteContent;
+}
+
+const { content } = Astro.props;
+---
+
+<section class="py-section-gap" id="expertise">
+  <SectionHeading title={content.skills.heading} />
+  <div class="grid grid-cols-1 gap-gutter md:grid-cols-2 lg:grid-cols-3">
+    {
+      content.skills.categories.map((category) => (
+        <article class="flex flex-col gap-4 rounded border border-surface-variant bg-surface-container-lowest p-6">
+          <div class="flex items-center gap-2 text-primary">
+            <Icon name={category.icon} class="text-xl" />
+            <h3 class="font-label-md text-label-md font-bold">{category.title}</h3>
+          </div>
+          <TagList items={category.skills} />
+        </article>
+      ))
+    }
+  </div>
+</section>

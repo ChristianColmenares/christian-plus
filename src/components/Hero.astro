@@ -1,0 +1,64 @@
+---
+import type { SiteContent } from '../content/site';
+import Icon from './Icon.astro';
+
+interface Props {
+  content: SiteContent;
+}
+
+const { content } = Astro.props;
+---
+
+<section
+  id="top"
+  class="relative grid grid-cols-1 items-center gap-gutter py-section-gap md:grid-cols-12"
+>
+  <div class="pointer-events-none absolute inset-y-0 left-[50%] z-0 w-[100vw] -translate-x-1/2 bg-[linear-gradient(135deg,rgba(9,20,38,0.08),transparent_36%,rgba(84,95,115,0.08))] [mask-image:linear-gradient(to_bottom,transparent_0%,black_18%,black_82%,transparent_100%)]"></div>
+  <div class="pointer-events-none absolute inset-y-0 left-[50%] z-0 w-[100vw] -translate-x-1/2 opacity-[0.05] [background-image:linear-gradient(90deg,#091426_1px,transparent_1px),linear-gradient(#091426_1px,transparent_1px)] [background-size:32px_32px] [mask-image:linear-gradient(to_bottom,transparent_0%,black_18%,black_82%,transparent_100%)]"></div>
+  <div class="relative z-10 col-span-1 flex flex-col gap-6 md:col-span-8">
+    <h1 class="max-w-4xl font-headline-xl text-[40px] leading-[1.1] text-primary sm:text-headline-xl">
+      {content.hero.titlePrefix}<br class="hidden sm:block" />
+      {content.hero.titleSuffix}
+    </h1>
+    <p class="max-w-3xl font-body-lg text-body-lg text-secondary">
+      {content.hero.description}
+    </p>
+    <div class="flex flex-wrap gap-4 pt-4">
+      <a
+        class="rounded bg-primary-container px-6 py-3 font-label-md text-label-md text-on-primary transition-opacity hover:opacity-90"
+        href={content.cvUrl}
+      >
+        {content.hero.primaryCta}
+      </a>
+      <a
+        class="rounded border border-outline px-6 py-3 font-label-md text-label-md text-primary transition-colors hover:bg-surface-container-low"
+        href={content.hero.secondaryHref}
+      >
+        {content.hero.secondaryCta}
+      </a>
+    </div>
+    <div class="flex flex-wrap gap-4 pt-8 text-secondary">
+      {
+        content.hero.socialLinks.map((link) => (
+          <a class="inline-flex items-center gap-2 transition-colors hover:text-primary" href={link.href}>
+            {link.icon && <Icon name={link.icon} />}
+            {link.label}
+          </a>
+        ))
+      }
+    </div>
+  </div>
+
+  <div class="relative z-10 col-span-1 md:col-span-4">
+    <div class="flex aspect-[4/5] max-h-[560px] items-end justify-center overflow-hidden rounded border border-surface-variant bg-surface-container-low shadow-[0_24px_80px_rgba(9,20,38,0.14),0_8px_24px_rgba(9,20,38,0.08)]">
+      <img
+        src="/images/retrato.png"
+        alt="Retrato de Christian Colmenares"
+        width="804"
+        height="1244"
+        class="h-full w-full object-cover object-center"
+        decoding="async"
+      />
+    </div>
+  </div>
+</section>

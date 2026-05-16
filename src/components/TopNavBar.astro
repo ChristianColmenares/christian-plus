@@ -1,0 +1,61 @@
+---
+import type { SiteContent } from '../content/site';
+import Icon from './Icon.astro';
+
+interface Props {
+  content: SiteContent;
+}
+
+const { content } = Astro.props;
+---
+
+<nav class="fixed left-0 right-0 top-0 z-50 mx-auto flex w-full max-w-[1280px] items-center justify-between border-b border-outline-variant bg-surface/80 px-margin-mobile py-4 backdrop-blur-md md:px-margin-desktop">
+  <a
+    href="#top"
+    class="font-headline-lg-mobile text-headline-lg-mobile font-semibold text-primary md:font-headline-lg md:text-headline-lg"
+  >
+    {content.brand}
+  </a>
+
+  <div class="hidden items-center gap-content-gap font-label-md text-label-md md:flex">
+    {
+      content.nav.links.map((link) => (
+        <a class="text-secondary transition-colors duration-200 hover:text-primary" href={link.href}>
+          {link.label}
+        </a>
+      ))
+    }
+    <a class="text-secondary transition-colors duration-200 hover:text-primary" href={content.nav.languageHref}>
+      {content.nav.languageLabel}
+    </a>
+  </div>
+
+  <a
+    class="hidden rounded bg-primary-container px-6 py-2 font-label-md text-label-md text-on-primary transition-opacity hover:opacity-90 md:flex"
+    href={content.cvUrl}
+  >
+    {content.nav.cvLabel}
+  </a>
+
+  <details class="group relative md:hidden">
+    <summary class="flex cursor-pointer list-none text-primary marker:hidden">
+      <Icon name="menu" class="text-3xl group-open:hidden" />
+      <Icon name="close" class="hidden text-3xl group-open:inline-flex" />
+    </summary>
+    <div class="absolute right-0 mt-4 flex min-w-48 flex-col gap-3 border border-outline-variant bg-surface-container-lowest p-4 shadow-sm">
+      {
+        content.nav.links.map((link) => (
+          <a class="font-label-md text-label-md text-secondary hover:text-primary" href={link.href}>
+            {link.label}
+          </a>
+        ))
+      }
+      <a class="font-label-md text-label-md text-secondary hover:text-primary" href={content.nav.languageHref}>
+        {content.nav.languageLabel}
+      </a>
+      <a class="rounded bg-primary-container px-4 py-2 text-center font-label-md text-label-md text-on-primary" href={content.cvUrl}>
+        {content.nav.cvLabel}
+      </a>
+    </div>
+  </details>
+</nav>

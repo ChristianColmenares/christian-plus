@@ -1,0 +1,27 @@
+---
+import AboutEducation from '@components/AboutEducation.astro';
+import Experience from '@components/Experience.astro';
+import Footer from '@components/Footer.astro';
+import Hero from '@components/Hero.astro';
+import Skills from '@components/Skills.astro';
+import TopNavBar from '@components/TopNavBar.astro';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import type { SiteContent } from '../content/site';
+
+interface Props {
+  content: SiteContent;
+}
+
+const { content } = Astro.props;
+---
+
+<BaseLayout title={content.title} description={content.description} lang={content.htmlLang}>
+  <TopNavBar content={content} />
+  <main class="mx-auto max-w-[1280px] px-margin-mobile md:px-margin-desktop">
+    <Hero content={content} />
+    <Skills content={content} />
+    <Experience content={content} /> 
+    <AboutEducation content={content} />
+  </main>
+  <Footer content={content} />
+</BaseLayout>

@@ -1,0 +1,64 @@
+---
+import type { SiteContent } from '../content/site';
+import Icon from './Icon.astro';
+import TagList from './TagList.astro';
+
+interface Props {
+  content: SiteContent;
+}
+
+const { content } = Astro.props;
+---
+
+<section class="py-section-gap" id="education">
+  <div class="grid grid-cols-1 gap-gutter md:grid-cols-12">
+    <div class="col-span-1 flex flex-col gap-8 md:col-span-5">
+      <div>
+        <h2 class="mb-6 font-headline-lg-mobile text-headline-lg-mobile text-primary md:font-headline-lg md:text-headline-lg">
+          {content.aboutEducation.aboutHeading}
+        </h2>
+        <p class="mb-4 font-body-md text-body-md text-secondary">
+          {content.aboutEducation.aboutBody}
+        </p>
+        <div class="inline-block rounded border border-surface-variant bg-surface-container-low p-4">
+          <div class="flex items-center gap-2 text-primary">
+            <Icon name="public" />
+            <span class="font-label-sm text-label-sm font-bold">
+              {content.aboutEducation.availability}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-span-1 hidden h-full border-l border-surface-variant md:col-start-7 md:block"></div>
+
+    <div class="col-span-1 flex flex-col gap-8 md:col-span-5">
+      <div>
+        <h2 class="mb-6 font-headline-lg-mobile text-headline-lg-mobile text-primary md:font-headline-lg md:text-headline-lg">
+          {content.aboutEducation.educationHeading}
+        </h2>
+        <div class="flex flex-col gap-6">
+          <div>
+            <h3 class="font-label-md text-label-md font-bold text-primary">{content.aboutEducation.degreeTitle}</h3>
+            <p class="font-body-md text-body-md text-secondary">{content.aboutEducation.degreeInstitution}</p>
+          </div>
+          <div>
+            <h3 class="mb-2 font-label-md text-label-md font-bold text-primary">
+              {content.aboutEducation.certificationsHeading}
+            </h3>
+            <ul class="list-inside list-disc font-body-md text-body-md text-secondary">
+              {content.aboutEducation.certifications.map((certification) => <li>{certification}</li>)}
+            </ul>
+          </div>
+          <div>
+            <h3 class="mb-2 font-label-md text-label-md font-bold text-primary">
+              {content.aboutEducation.languagesHeading}
+            </h3>
+            <TagList items={content.aboutEducation.languages} />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,8 @@
+---
+import PortfolioPage from '@components/PortfolioPage.astro';
+import { defaultLocale, siteContent } from '../content/site';
+
+const content = siteContent[defaultLocale];
+---
+
+<PortfolioPage content={content} />

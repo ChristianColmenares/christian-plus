@@ -1,0 +1,35 @@
+---
+import type { SiteContent } from '../content/site';
+
+interface Props {
+  content: SiteContent;
+}
+
+const { content } = Astro.props;
+---
+
+<footer
+  class="mx-auto flex w-full max-w-[1280px] flex-col items-start justify-between gap-content-gap border-t border-outline-variant bg-surface px-margin-mobile py-section-gap md:flex-row md:px-margin-desktop"
+  id="contact"
+>
+  <div class="flex flex-col gap-4">
+    <div class="font-label-md text-label-md font-bold text-primary">{content.brand}</div>
+    <div class="max-w-sm font-body-md text-body-md text-secondary">
+      {content.footer.copyright}
+    </div>
+    <div class="mt-2 font-label-sm text-label-sm text-secondary">
+      {content.footer.phone} <br />
+      {content.footer.email}
+    </div>
+  </div>
+  <div class="flex flex-col gap-6 font-label-sm text-label-sm md:flex-row">
+    {
+      content.footer.links.map((link) => (
+        <a class="text-secondary underline transition-all hover:text-primary focus:ring-1 focus:ring-outline" href={link.href}>
+          {link.label}
+        </a>
+      ))
+    }
+    <span class="text-secondary">{content.footer.location}</span>
+  </div>
+</footer>
