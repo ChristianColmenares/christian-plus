@@ -1,5 +1,5 @@
 ---
-import type { SiteContent } from '../content/site';
+import type { LinkItem, SiteContent } from '../content/site';
 import Icon from './Icon.astro';
 
 interface Props {
@@ -39,7 +39,7 @@ const { content } = Astro.props;
     </div>
     <div class="flex flex-wrap gap-4 pt-8 text-secondary">
       {
-        content.hero.socialLinks.map((link) => (
+        content.hero.socialLinks.map((link: LinkItem) => (
           <a class="inline-flex items-center gap-2 transition-colors hover:text-primary" href={link.href}>
             {link.icon && <Icon name={link.icon} />}
             {link.label}
@@ -52,7 +52,7 @@ const { content } = Astro.props;
   <div class="relative z-10 col-span-1 md:col-span-4">
     <div class="flex aspect-[4/5] max-h-[560px] items-end justify-center overflow-hidden rounded">
       <img
-        src="/images/retrato.png"
+        src="/images/retrato.svg"
         alt="Retrato de Christian Colmenares"
         width="804"
         height="1244"

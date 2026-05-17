@@ -80,7 +80,7 @@ export interface SiteContent {
 const shared = {
   brand: "Christian Colmenares",
   cvUrl: "/cv/christian-colmenares-cv.pdf",
-  email: "christian@colmenares.net",
+  email: "contact@christian.plus",
   phone: "+507 60016847",
   linkedinUrl: "https://linkedin.com/in/ChristianColmenares",
   githubUrl: "https://github.com/ChristianColmenares",
@@ -101,6 +101,8 @@ const shared = {
     backend: [
       "NestJS",
       "Golang",
+      "Java",
+      "C#",
       "TypeScript",
       "Python",
       "REST APIs",
@@ -114,9 +116,29 @@ const shared = {
       "OPC UA",
     ],
     protocols: ["MQTT", "Modbus", "S7", "Sparkplug B"],
-    frontend: ["Vue.js", "UI/UX", "HMI/SCADA Dashboards"],
-    data: ["PostgreSQL", "Redis", "TimescaleDB", "AWS", "GCP"],
-    devops: ["Docker", "Docker Compose", "Git", "CI/CD", "Linux"],
+    frontend: ["Vue.js", "React", "Flutter", "UI/UX", "HMI/SCADA Dashboards"],
+    data: [
+      "PostgreSQL",
+      "SQL",
+      "Excell",
+      "Redis",
+      "TimescaleDB",
+      "ERP",
+      "",
+      "AWS",
+      "GCP",
+    ],
+    devops: [
+      "Docker",
+      "Docker Compose",
+      "Git",
+      "CI/CD",
+      "Linux",
+      "Clude",
+      "Codex",
+      "AI",
+      "Chatgpt",
+    ],
   },
   projects: {
     cloudHmi: {
@@ -126,7 +148,7 @@ const shared = {
       tags: ["NestJS", "PostgreSQL", "Docker", "MQTT"],
     },
     dataVenezuela: {
-      title: "DataVenezuela.com",
+      title: "datavenezuela.com",
       description:
         "Financial data hub, real-time pipelines, continuous scraping.",
       tags: ["Data Pipelines", "Real-time"],
